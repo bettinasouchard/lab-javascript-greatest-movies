@@ -29,32 +29,45 @@ return (Number((sumRate/moviesss.length).toFixed(2)));
     function dramaMoviesRate(movielist) {
         
         const drama = movielist.filter(function (movie) {
-            return (
-            movie.genre.includes('Drama') else 
-          );
+            return ( movie.genre.includes('Drama'));
         });
-        
+            
         let total = 0
-        let result = drama.map((x) => total += x.rate);
+        let result = drama.map((x) => total += x.rate );
+        if (drama.length === 0) return total;
         return (Number((total/drama.length).toFixed(2)))
       }
 
-      
-
-// Create a dramaMoviesRate() function that receives an array 
-// as a parameter to get the average rate of all drama movies! 
-// Let's see if it is better than the general average.
-// 
-// Again, rounded to 2 decimals!
 // Iteration 5: Ordering by year - Order by year, ascending (in growing order)
 
-function orderByYear () {
-    movies.sort((function(a,b) {
-        return a.year - b.year
-    }));
+function orderByYear (movies) {
+     
+	let a = (movies.slice().sort((function(a,b) { 
+        let value =	(a.year == b.year) ? (a.title > b.title ? 1 : -1) : (a.year> b.year? 1 : -1);      
+        return value;
+      }))); 
+    
+    
+    return a;
 }
 
+
+
+
 // Iteration 6: Alphabetic Order - Order by title and print the first 20 titles
+
+function orderAlphabetically (movies) { 
+    let film = movies.map((movie) => { return movie.title; });
+    let twenty = film.sort();   
+    return twenty.slice(0,20)   
+}
+
+
+//function orderAlphabetically (movies){
+ //   return movies.sort((function(x, y){
+ //       return x.toString().localeCompare(y.toString());
+ //   }));
+// }
 
 // BONUS - Iteration 7: Time Format - Turn duration of the movies from hours to minutes
 
