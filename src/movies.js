@@ -43,7 +43,13 @@ return (Number((sumRate/moviesss.length).toFixed(2)));
 function orderByYear (movies) {
      
 	let a = (movies.slice().sort((function(a,b) { 
-        let value =	(a.year == b.year) ? (a.title > b.title ? 1 : -1) : (a.year> b.year? 1 : -1);      
+        if (a.year> b.year) { return 1;}
+        else if (a.year < b.year) {return -1;}
+        else { 
+            if(a.title > b.title) {return 1;}
+            else if (a.title < b.title) {return -1;}
+        }
+
         return value;
       }))); 
     
@@ -51,7 +57,7 @@ function orderByYear (movies) {
     return a;
 }
 
-
+// let value =	(a.year == b.year) ? (a.title > b.title ? 1 : -1) : (a.year> b.year? 1 : -1); 
 
 
 // Iteration 6: Alphabetic Order - Order by title and print the first 20 titles
@@ -72,3 +78,7 @@ function orderAlphabetically (movies) {
 // BONUS - Iteration 7: Time Format - Turn duration of the movies from hours to minutes
 
 // BONUS - Iteration 8: Best yearly rate average - Best yearly rate average
+
+function bestYearAvg (movies) {
+    if (movies.length === 0) return null;
+}
